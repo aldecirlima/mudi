@@ -1,12 +1,20 @@
 package br.com.alura.mvc.mudi.dto;
 
+import javax.validation.constraints.NotBlank;
+
 import br.com.alura.mvc.mudi.model.Pedido;
 
 public class RequisicaoNovoPedido {
 
+	@NotBlank // NotBlank.requisicaoNovoPedido.nomeProduto=O campo nome do produto é obrigatório
 	private String nomeProduto;
+	
+	@NotBlank
 	private String urlProduto;
+	
+	@NotBlank
 	private String urlImagem;
+	
 	private String descricao;
 
 	public RequisicaoNovoPedido(String nomeProduto, String urlProduto, String urlImagem, String descricao) {
