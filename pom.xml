@@ -10,6 +10,10 @@
 	<groupId>br.com.alura.mvc</groupId>
 	<artifactId>mudi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
+	<!-- Configuração para que na build externa seja configurado o empacotamento WAR -->
+	<packaging>war</packaging>
+	
 	<name>mudi</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -52,6 +56,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Adicionar dependência com escopo ""provided"" para que na build externa seja configurado o empacotamento WAR -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -59,6 +71,19 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
